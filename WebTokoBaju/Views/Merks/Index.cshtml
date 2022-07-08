@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebTokoBaju.Data.Merk>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Daftar Merk Baju</h1>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NamaMerk)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-sm btn-success">
+                    <i class="fa-solid fa-plus"></i> Tambah Merk Baju
+                 </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaMerk)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdMerk" class="btn btn-sm btn-warning">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdMerk" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

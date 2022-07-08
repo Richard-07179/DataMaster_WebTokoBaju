@@ -1,0 +1,27 @@
+﻿@model WebTokoBaju.Data.Merk
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Konfirmasi Hapus</h1>
+
+<h3>Apakah anda yakin ingin menghapus Merk Baju dibawah ini?</h3>
+<div>
+    <h4>Merk</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.NamaMerk)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.NamaMerk)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdMerk" />
+        <input type="submit" value="Hapus" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-info">Batal</a>
+    </form>
+</div>

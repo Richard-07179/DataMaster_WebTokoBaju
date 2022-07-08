@@ -1,0 +1,37 @@
+﻿@model WebTokoBaju.Data.Merk
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Edit</h1>
+        <hr />
+
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdMerk" />
+            <div class="form-group">
+                <label asp-for="NamaMerk" class="control-label"></label>
+                <input asp-for="NamaMerk" class="form-control" />
+                <span asp-validation-for="NamaMerk" class="text-danger"></span>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Simpan" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-danger w-100">Batal</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

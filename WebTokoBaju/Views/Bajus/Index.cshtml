@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebTokoBaju.Data.Baju>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Daftar Baju</h1>
+
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                Gambar
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NamaBaju)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MyJenisBaju.NamaJenisBaju)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MyMerk.NamaMerk)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Harga)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-sm btn-success">
+                    <i class="fa-solid fa-plus"></i> Tambah Baju
+                 </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                <img src="~/gambar_baju/@item.PathGambarBaju" style="width:75px;height:75px;"/>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaBaju)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MyJenisBaju.NamaJenisBaju)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MyMerk.NamaMerk)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Harga)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdBaju" class="btn btn-sm btn-warning">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdBaju" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

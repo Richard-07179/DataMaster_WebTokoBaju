@@ -1,0 +1,63 @@
+﻿@model WebTokoBaju.Data.Baju
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+
+<div class="row">
+    <div class="col-md-6 offset-md-3">
+        <h1>Baju</h1>
+        <hr />
+        <form asp-action="Edit" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdBaju" />
+             <div class="form-group">
+                <label asp-for="MyMerk" class="control-label">Merk</label>
+                <select asp-for="id_merk" class ="form-select" asp-items="@(new SelectList(ViewBag.Merks,"IdMerk","NamaMerk"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="MyJenisBaju" class="control-label">Jenis Baju</label>
+                <select asp-for="id_jenis_baju" class ="form-select" asp-items="@(new SelectList(ViewBag.JenisBajus,"IdJenisBaju","NamaJenisBaju"))"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="NamaBaju" class="control-label"></label>
+                <input asp-for="NamaBaju" class="form-control" />
+                <span asp-validation-for="NamaBaju" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Harga" class="control-label"></label>
+                <input asp-for="Harga" class="form-control" />
+                <span asp-validation-for="Harga" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PathGambarBaju" class="control-label"></label>
+                <textarea asp-for="PathGambarBaju" class="form-control" readonly></textarea>
+                <span asp-validation-for="PathGambarBaju" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GambarBaju" class="control-label"></label>
+                <div class="custom-file">
+                    <input asp-for="GambarBaju" class="form-control" id="customFile" />
+                </div>
+                <span asp-validation-for="GambarBaju" class="text-danger"></span>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Simpan" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <a asp-action="Index" class="btn btn-danger w-100">Batal</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

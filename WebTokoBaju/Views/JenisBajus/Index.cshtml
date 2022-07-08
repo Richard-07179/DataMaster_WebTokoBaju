@@ -1,0 +1,36 @@
+﻿@model IEnumerable<WebTokoBaju.Data.JenisBaju>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Daftar Jenis Baju</h1>
+
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NamaJenisBaju)
+            </th>
+            <th>
+                <a asp-action="Create" class="btn btn-sm btn-success">
+                    <i class="fa-solid fa-plus"></i> Tambah Jenis Baju
+                 </a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NamaJenisBaju)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdJenisBaju" class="btn btn-sm btn-warning">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdJenisBaju" class="btn btn-sm btn-danger">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
